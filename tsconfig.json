@@ -1,0 +1,34 @@
+{
+  "include": ["./src", "../core/src", "../hooks/src"],
+  "exclude": ["./lib", "./dist"],
+  "compilerOptions": {
+    "types": ["node"],
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "strict": true,
+    "skipLibCheck": false,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "noUncheckedIndexedAccess": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/blocks": ["./src/index"],
+      "@/blocks/*": ["./src/*"],
+      "@ui8kit/core": ["../core/src"],
+      "@ui8kit/hooks": ["../hooks/src"],
+      "@ui8kit/core": ["../theme/src"]
+    }
+  }
+} 
