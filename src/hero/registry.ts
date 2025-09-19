@@ -58,7 +58,7 @@ const splitHeroDef: HeroBlockDefinition = {
 const centeredHeroDef: HeroBlockDefinition = {
   type: "hero.centered",
   name: "Centered Hero",
-  variants: ["simple", "withTopButton", "withImage", "withStats"],
+  variants: ["simple", "withTopButton", "withImage", "withStats", "withGradient"],
   version: 1,
   render: (node) => {
     const { props = {}, variant } = node;

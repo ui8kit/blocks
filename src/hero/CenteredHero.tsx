@@ -50,7 +50,7 @@ export interface CenteredHeroData {
 
 interface CenteredHeroProps {
   content: CenteredHeroData;
-  variant?: "simple" | "withTopButton" | "withImage" | "withStats";
+  variant?: "simple" | "withTopButton" | "withImage" | "withStats" | "withGradient";
   useContainer?: boolean;
   py?: VariantSpacingProps["py"];
   className?: string;
@@ -339,6 +339,79 @@ const centeredHeroContentHooks = {
         </Group>
       ) : null
     )
+  }),
+
+  // Centered hero with stats
+  withGradient: createLayoutContentHook({
+    header: (content: CenteredHeroData) => (
+      <Stack gap="xl" align="center" ta="center" className="max-w-4xl mx-auto">
+        {content.badge && (
+          <Badge variant="secondary" size={theme?.themeButtonSize.badge} rounded={theme?.themeRounded.badge}>
+            {content.badge}
+          </Badge>
+        )}
+
+        <Title
+          order={1}
+          size="5xl"
+          fw="bold"
+          ta="center"
+          className="tracking-tight leading-tight"
+        >
+          {content.title}
+        </Title>
+
+        <Text
+          c="secondary-foreground"
+          ta="center"
+          className="max-w-[42rem]"
+        >
+          {content.description}
+        </Text>
+
+        {(content.primaryButtonText || content.secondaryButtonText) && (
+          <Group gap="md" align="center">
+            {content.primaryButtonText && (
+              <Button
+                variant="default"
+                rounded={theme?.themeRounded.default}
+                size={theme?.themeButtonSize.default}
+                rightSection={
+                  <Icon
+                    c="primary-foreground"
+                    lucideIcon={ArrowRight}
+                  />
+                }
+              >
+                {content.primaryButtonText}
+              </Button>
+            )}
+
+            {content.secondaryButtonText && (
+              <Button variant="outline" rounded={theme?.themeRounded.default} size={theme?.themeButtonSize.default}>
+                {content.secondaryButtonText}
+              </Button>
+            )}
+          </Group>
+        )}
+      </Stack>
+    ),
+    afterHeader: (content: CenteredHeroData) => (
+      content.stats ? (
+        <Group gap="xl" align="center" justify="center" className="flex-wrap">
+          {content.stats.map((stat) => (
+            <Stack key={stat.id} gap="xs" align="center">
+              <Text size="3xl" fw="bold" c="primary" className="leading-none">
+                {stat.value}
+              </Text>
+              <Text c="secondary-foreground" ta="center">
+                {stat.label}
+              </Text>
+            </Stack>
+          ))}
+        </Group>
+      ) : null
+    )
   })
 };
 
@@ -374,4 +447,4 @@ export const CenteredHero = forwardRef<HTMLElement, CenteredHeroProps>(
 CenteredHero.displayName = "CenteredHero";
 
 // Export template configurations
-// simple, withTopButton, withImage, withStats
+// simple, withTopButton, withImage, withStats, withGradient

@@ -23,7 +23,7 @@ export const CenteredHeroPreset = [
 			},
 {
 				type: "hero.centered",
-				variant: "withStats",
+				variant: "withGradient",
 				props: { content: { badge: "Our Mission", title: "Building technology that brings people together", description: "We believe technology should connect us, not divide us. Our mission is to create tools that foster collaboration, understanding, and positive change in the world.", stats: [{ id: "1", value: "50M+", label: "Connections Made" }, { id: "2", value: "195", label: "Countries Reached" }, { id: "3", value: "1B+", label: "Messages Sent" }], primaryButtonText: "Join Our Mission", secondaryButtonText: "Read Our Story", primaryButtonIcon: Heart }, useContainer: true, className: "bg-gradient-to-t from-primary/10 to-secondary/15" }
 			}
 ];
